@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import pickle
 import streamlit as st
+import os
 
 
 def get_profil():
@@ -47,13 +48,13 @@ def get_profil():
     return profil_client
 
 
-st.title("Prédiction d'accord d'un crédit")
+st.title("Test")
 
 st.sidebar.header("Votre profil")
 
 input_df = get_profil()
 
-df = pd.read_csv("C:/Users/sdf07/PycharmProjects/credit/test.csv")
+df = pd.read_csv("test.csv")
 credit_input = df.drop(columns=['Loan_ID', 'Loan_Status'])
 donnee_entree = pd.concat([input_df, credit_input], axis=0)
 var_cat = ['Gender', 'Married', 'Dependents', 'Education','Self_Employed', 'Credit_History', 'Property_Area']
@@ -68,7 +69,9 @@ donnee_entree = donnee_entree[:1]
 st.subheader("Les caractéristiques : ")
 st.write(donnee_entree)
 
-model = pickle.load(open("C:/Users/sdf07/PycharmProjects/credit/prevision_credit.pkl", 'rb'))
+path = "prevision_credit.pkl"
+with open(path, 'rb') as file:
+    model = pickle.load(file)
 
 prevision = model.predict(donnee_entree)
 

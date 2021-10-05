@@ -3,6 +3,10 @@ import numpy as np
 import pickle
 import streamlit as st
 import os
+import sklearn
+
+
+print(sklearn.__version__)
 
 
 def get_profil():

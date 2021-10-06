@@ -7,8 +7,6 @@ import sklearn
 
 
 print(sklearn.__version__)
-
-
 def get_profil():
 
     Gender=st.sidebar.selectbox("Genre",("Male", "Female"))
